@@ -1,0 +1,108 @@
+/* Container styling */
+.checkout-container {
+    max-width: 50%;
+    margin: auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(50, 50, 93, 0.15);
+    font-family: "Poppins", sans-serif;
+}
+
+/* Title styling */
+.checkout-title {
+    text-align: center;
+    color: #4c4c9d; /* Deep purple for title */
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4c4c9d;
+    padding-bottom: 8px;
+}
+
+/* Form group styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.form-group label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #3a3a3a;
+    margin-bottom: 6px;
+}
+
+/* Input styling */
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: #4c4c9d;
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 76, 157, 0.3);
+}
+
+/* Textarea specific styling */
+.form-textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* Submit button styling */
+.form-submit {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(90deg, #4c4c9d, #6f77d1); /* Gradient button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(50, 50, 93, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-submit:hover {
+    background: linear-gradient(90deg, #6f77d1, #4c4c9d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(50, 50, 93, 0.3);
+}
+
+/* Add subtle hover effect for inputs */
+.form-input:hover,
+.form-textarea:hover,
+.form-select:hover {
+    border-color: #6f77d1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .checkout-title {
+        font-size: 22px;
+    }
+}
+.message{
+    margin-bottom: 10px;
+    color: green;
+    font-weight: 700;
+}
