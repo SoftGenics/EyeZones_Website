@@ -3,30 +3,83 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SERVER_API_URL } from '../../server/server';
 import { SERVER_URL } from '../../server/server';
 import axios from 'axios'; // Import Axios
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+
 import { GlobleInfo } from '../../App';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { jwtDecode } from "jwt-decode";
-import tdesign from '../../Assets/images/tdesign_cart.png';
+// import tdesign from '../../Assets/images/tdesign_cart.png';
 import { ColorRing } from 'react-loader-spinner';
 import { IoShareSocialOutline } from "react-icons/io5";
+import { IoMdLocate } from "react-icons/io";
 import forword from '../../Assets/images/forword.png';
 import backword from '../../Assets/images/backword.png';
 import { IoClose } from 'react-icons/io5';
 import { FaFacebookF, FaTwitter, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import wishlist from '../../Assets/images/wishlist.svg'
 import wishlist1 from '../../Assets/images/wishlist1.svg'
+import men_image from '../../Assets/images/men-image.png';
+import men_image2 from '../../Assets/images/men-image2.png';
 
 import "./index.css"; // Import the corresponding CSS file
 import Header from "../../components/Header";
 import FaqPage from '../../screens/FaqPage'
-
+import Footer from "../../components/Footer";
 const reviews = [
-    { id: 1, user: "Nasrin Ahmed", comment: "Very perfect and beautiful.", date: "3 days ago", rating: 5 },
-    { id: 2, user: "Nasrin Ahmed", comment: "Very perfect and beautiful.", date: "3 days ago", rating: 5 },
-    { id: 3, user: "Nasrin Ahmed", comment: "Very perfect and beautiful.", date: "3 days ago", rating: 5 },
-    { id: 4, user: "Nasrin Ahmed", comment: "Very perfect and beautiful.", date: "3 days ago", rating: 5 }
+    { id: 1, user: "Rahul Mehra", comment: "Stylish and comfortable. Perfect for daily wear!", date: "22 Mar 2025", rating: 5 },
+    { id: 2, user: "Pooja Sharma", comment: "Loved the design. Good quality at a great price.", date: "14 Mar 2025", rating: 4 },
+    { id: 3, user: "Ankit Verma", comment: "Awesome product, fits well and looks classy.", date: "13 Mar 2025", rating: 5 },
+    { id: 4, user: "Neha Joshi", comment: "Chic and trendy. Great buy for the summer.", date: "22 Mar 2025", rating: 4 },
+    { id: 5, user: "Ravi Patel", comment: "Value for money. Highly recommended!", date: "03 Apr 2025", rating: 5 },
+    { id: 6, user: "Sneha Nair", comment: "Lens quality is impressive and stylish too.", date: "17 Mar 2025", rating: 4 },
+    { id: 7, user: "Karan Singh", comment: "Looks premium and feels lightweight.", date: "18 Mar 2025", rating: 5 },
+    { id: 8, user: "Anjali Desai", comment: "Glamorous look, got many compliments!", date: "06 Mar 2025", rating: 4 },
+    { id: 9, user: "Mohit Sinha", comment: "Perfect for driving and daily use.", date: "02 Apr 2025", rating: 5 },
+    { id: 10, user: "Ritika Kapoor", comment: "Very comfortable and trendy.", date: "19 Mar 2025", rating: 4 },
+    { id: 11, user: "Aman Chaudhary", comment: "Super stylish. Worth every penny!", date: "11 Mar 2025", rating: 5 },
+    { id: 12, user: "Kavita Reddy", comment: "Nice frame and UV protection is good.", date: "28 Mar 2025", rating: 4 },
+    { id: 13, user: "Vikram Shetty", comment: "Exactly as shown in pictures. Great product!", date: "08 Mar 2025", rating: 5 },
+    { id: 14, user: "Priya Malhotra", comment: "Very classy. Loved the packaging too.", date: "04 Apr 2025", rating: 4 },
+    { id: 15, user: "Rohit Yadav", comment: "Perfect fit and finish. Highly satisfied.", date: "25 Mar 2025", rating: 5 },
+    { id: 16, user: "Isha Bansal", comment: "Stylish and light on the nose.", date: "12 Mar 2025", rating: 4 },
+    { id: 17, user: "Nikhil Rathi", comment: "Impressive build quality. Looks elegant.", date: "21 Mar 2025", rating: 5 },
+    { id: 18, user: "Megha Jain", comment: "Trendy design. Great for photos!", date: "16 Mar 2025", rating: 4 },
+    { id: 19, user: "Abhishek Tiwari", comment: "Very durable and stylish sunglasses.", date: "27 Mar 2025", rating: 5 },
+    { id: 20, user: "Sanya Gupta", comment: "Good for both casual and formal outfits.", date: "10 Mar 2025", rating: 4 },
+    { id: 21, user: "Devansh Mishra", comment: "Superb product. Would buy again!", date: "26 Mar 2025", rating: 5 },
+    { id: 22, user: "Divya Iyer", comment: "Really loved the gradient lens.", date: "31 Mar 2025", rating: 4 },
+    { id: 23, user: "Manish Khurana", comment: "Amazing clarity and a cool look!", date: "09 Mar 2025", rating: 5 },
+    { id: 24, user: "Aarti Saxena", comment: "Lovely shape and finish. Happy with it.", date: "01 Apr 2025", rating: 4 },
+    { id: 25, user: "Saurav Ghosh", comment: "Comfortable and stylish. Perfect for outings.", date: "30 Mar 2025", rating: 5 },
+    { id: 26, user: "Naina Thakur", comment: "Quality product. Totally worth it.", date: "07 Mar 2025", rating: 4 },
+    { id: 27, user: "Yash Rajput", comment: "Looks exactly like the image. Awesome!", date: "23 Mar 2025", rating: 5 },
+    { id: 28, user: "Harshita Bhatt", comment: "Lightweight and modern design. Loved it!", date: "20 Mar 2025", rating: 4 },
+    { id: 29, user: "Rajeev Nambiar", comment: "Trendy and durable. 10/10.", date: "24 Mar 2025", rating: 5 },
+    { id: 30, user: "Tanvi Agarwal", comment: "Simple, elegant, and functional.", date: "15 Mar 2025", rating: 4 },
+    { id: 31, user: "Arjun Bhatia", comment: "Cool shades. Perfect gift item.", date: "29 Mar 2025", rating: 5 },
+    { id: 32, user: "Shruti Vyas", comment: "Design is sleek and fashionable.", date: "05 Mar 2025", rating: 4 },
+    { id: 33, user: "Yuvraj Dutta", comment: "Great purchase. Looks and feels premium.", date: "13 Mar 2025", rating: 5 },
+    { id: 34, user: "Simran Lamba", comment: "Stylish pair. Fits my face well.", date: "18 Mar 2025", rating: 4 },
+    { id: 35, user: "Tushar Chauhan", comment: "Lenses are perfect for outdoor activities.", date: "17 Mar 2025", rating: 5 },
+    { id: 36, user: "Ira Sen", comment: "Very fashionable and a good fit.", date: "01 Mar 2025", rating: 4 },
+    { id: 37, user: "Aditya Kulkarni", comment: "These sunglasses are next level!", date: "02 Mar 2025", rating: 5 },
+    { id: 38, user: "Lavanya Rao", comment: "Great lens clarity and beautiful frame.", date: "07 Mar 2025", rating: 4 },
+    { id: 39, user: "Kunal Dey", comment: "Best sunglasses I’ve owned so far.", date: "26 Mar 2025", rating: 5 },
+    { id: 40, user: "Rashmi Pathak", comment: "Comfortable and stylish, great for summer!", date: "28 Mar 2025", rating: 4 },
+    { id: 41, user: "Siddharth Naik", comment: "Superb finish and very light to wear.", date: "04 Mar 2025", rating: 5 },
+    { id: 42, user: "Alisha Kohli", comment: "Perfect match with ethnic and western wear.", date: "03 Mar 2025", rating: 4 },
+    { id: 43, user: "Jayant Rana", comment: "Elegant design and solid build quality.", date: "12 Mar 2025", rating: 5 },
+    { id: 44, user: "Bhavya Chauhan", comment: "Good coverage and very sleek design.", date: "27 Mar 2025", rating: 4 },
+    { id: 45, user: "Aarav Jain", comment: "Looks stylish and gives full sun protection.", date: "30 Mar 2025", rating: 5 }
 ];
+
 
 // const suggestedFrames = [
 //     { id: 1, name: "Black Full Rim Rectangle", price: 2750, color: "Black", material: "Plastic", rating: 5 },
@@ -61,7 +114,6 @@ const lensData = {
     ]
 }
 
-
 const ProductDetails = () => {
     const history = useNavigate();
     const { product_id } = useParams();
@@ -92,7 +144,11 @@ const ProductDetails = () => {
     const [copied, setCopied] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
 
+    const [mapDisplayAddress, setMapDisplayAddress] = useState(null);
+    const [productQuntity, setProductQuntity] = useState(1);
+
     const [selectedId, setSelectedId] = useState(null);
+    console.log("allProducts", allProducts)
 
     useEffect(() => {
         if (item?.result?.frameColor && item?.result?.lenshColor) {
@@ -123,6 +179,50 @@ const ProductDetails = () => {
             // console.log("Decoded Mobile Number:", mobile_num);
         }
     }, []);
+
+    useEffect(() => {
+        const fetchAddress = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    console.error("Token is missing.");
+                    return;
+                }
+
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                };
+
+                const response = await axios.get("http://localhost:8000/getallUserinfo", config);
+                const data = response.data;
+
+                console.log("Full API response:", data);
+
+                // Ensure mobile_num is defined
+                if (!mobile_num) {
+                    console.error("mobile_num is not defined.");
+                    return;
+                }
+
+                const dataAddress = data.filter(
+                    (user) => String(user.mobile_num) === String(mobile_num)
+                );
+
+                if (dataAddress.length > 0) {
+                    const selected = dataAddress[0];
+                    setMapDisplayAddress(`${selected.city}, ${selected.state}, ${selected.pincode}`);
+                }
+
+            } catch (error) {
+                console.error("Error fetching address info:", error);
+            }
+        };
+
+        fetchAddress();
+    }, [product_id]); // Add dependencies here if needed
+
 
     // Function to handle sharing
     const handleShare = (platform) => {
@@ -180,6 +280,53 @@ const ProductDetails = () => {
             history('/ChekOutPage')
         } else {
             alert("Please select valid options.");
+        }
+    };
+
+    const handleOpenGoogleMap = async () => {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                console.error("Token is missing.");
+                return;
+            }
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+
+            const response = await axios.get("http://localhost:8000/getallUserinfo", config);
+            const data = response.data;
+
+            console.log("Full API response:", data);
+
+            // Ensure mobile_num is defined
+            if (!mobile_num) {
+                console.error("mobile_num is not defined.");
+                return;
+            }
+
+            const dataAddress = data.filter((user) =>
+                String(user.mobile_num) === String(mobile_num)
+            )
+
+            console.log("dataAddress", dataAddress);
+            // const firstItem = dataAddress[0];
+            // console.log(firstItem.city); // "parsa"
+
+
+            if (dataAddress.length > 0) {
+                const selected = dataAddress[0];
+                const address = `${selected.city}, ${selected.state}`;
+                const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+                window.open(googleMapsUrl, "_blank");
+            } else {
+                console.error("No address found for this mobile number.");
+            }
+        } catch (error) {
+            console.error("Error fetching address info:", error);
         }
     };
 
@@ -369,9 +516,9 @@ const ProductDetails = () => {
 
         return colors;
     };
-    console.log("item new", item)
-    console.log("wishlist", wishlistItems)
-    console.log("item?.result?", item?.result?.product_id)
+    // console.log("item new", item)
+    // console.log("wishlist", wishlistItems)
+    // console.log("item?.result?", item?.result?.product_id)
 
     const images = item?.result?.product_all_img || [];
 
@@ -397,7 +544,7 @@ const ProductDetails = () => {
         setSelectedImage(`${SERVER_API_URL}/${images[prevIndex]}`);
     };
 
-    const product_price = item?.result?.product_price - (item?.result?.product_price * item?.result?.discount / 100)
+    const product_price = (item?.result?.product_price - (item?.result?.product_price * item?.result?.discount / 100)) * productQuntity;
 
 
 
@@ -473,11 +620,11 @@ const ProductDetails = () => {
                                         <img className='larg-image' src={selectedImage ? selectedImage : `${SERVER_API_URL}/${item?.result?.product_thumnail_img}`} alt={`Large Image`} onClick={() => handleImageClickPopup(0)} />
                                     </div>
 
-                                    {/* ====== Popup Modal ====== */}
+                                    {/* ====== Popup Modal Product ====== */}
                                     {isPopupOpen && (
                                         <div className="image-popup-overlay">
                                             <div className="image-popup">
-                                                <span className="close-btn" onClick={closePopup}>&times;</span>
+                                                <span className="close-btn" style={{ fontSize: "30px" }} onClick={closePopup}>&times;</span>
                                                 <button className="prev-btn1" onClick={handlePrev}><img className='forword-btn' src={backword} alt="forword-btn" /></button>
                                                 <img className="popup-image" src={selectedImage} alt="Popup Large View" />
                                                 <button className="next-btn1" onClick={handleNext}><img className='forword-btn' src={forword} alt="forword-btn" /></button>
@@ -485,7 +632,7 @@ const ProductDetails = () => {
                                             <div className="thumbnail-row" style={{ width: "50%", justifyContent: "space-around" }}>
                                                 {item?.result && item.result.product_all_img && (
                                                     <>
-                                                        <button onClick={handlePrev} style={{ background: "transparent", border: "none", fontSize: "20px" }}><IoIosArrowBack color='#333' /></button>
+                                                        <button onClick={handlePrev} style={{ background: "transparent", border: "none", fontSize: "25px" }}><IoIosArrowBack color='#fff' /></button>
                                                         <div className="thumbnail">
                                                             <img
                                                                 className='mini-image'
@@ -521,7 +668,7 @@ const ProductDetails = () => {
                                                                 onClick={() => handleImageClick(`${SERVER_API_URL}/${item?.result?.product_all_img[3]}`)}
                                                             />
                                                         </div>
-                                                        <button className="" style={{ background: "transparent", border: "none", fontSize: "20px" }} onClick={handleNext}><IoIosArrowForward color='#333' /></button>
+                                                        <button className="" style={{ background: "transparent", border: "none", fontSize: "25px" }} onClick={handleNext}><IoIosArrowForward color='#fff' /></button>
                                                     </>
                                                 )}
 
@@ -577,32 +724,19 @@ const ProductDetails = () => {
 
                                 {/* Product Info Section */}
                                 <div className="product-info-section">
-                                    <h1 className="product-title1">{item?.result?.highlights} Stylish Sunglasses</h1>
-                                    <h3>{item?.result?.product_title}</h3>
-                                    {/* <p className="product-price">₹{product_price.toFixed(0)}</p> */}
-                                    {/* <button className="try-on-btn">TRY ON FACE</button> */}
-                                    <button className="add-to-cart-btn" onClick={() => addToCart(item)}><img src={tdesign} style={{ marginRight: "10px" }} alt="tdesign" />ADD TO CART</button>
-                                    <div className="cart-controls">
-                                    </div>
-
-                                    <div className="cart-controls" style={{ marginBottom: "5px" }}>
-                                        <button
-                                            className="buy-now-btn"
-                                            onClick={handleDirectPayment}
-                                            disabled={!selectedColor} // Disable if selectedColor is null
-                                            style={{ opacity: !selectedColor ? 0.5 : 1, cursor: !selectedColor ? "not-allowed" : "pointer" }}
-                                        >
-                                            BUY NOW
-                                        </button>
-                                        <button
-                                            className="buy-now-btn"
-                                            onClick={handlePowerClick}
-                                            disabled={!selectedColor} // Disable if selectedColor is null
-                                            style={{ opacity: !selectedColor ? 0.5 : 1, cursor: !selectedColor ? "not-allowed" : "pointer" }}
-                                        >
-                                            ADD POWER
-                                        </button>
-
+                                    <h1 className="product-title">{item?.result?.highlights} Stylish Sunglasses</h1>
+                                    <h3 className="product-title">{item?.result?.product_title}</h3>
+                                    <div className="rating-container">
+                                        <span className="rating-value">4.4</span>
+                                        <div className="stars">
+                                            <FaStar className="star" />
+                                            <FaStar className="star" />
+                                            <FaStar className="star" />
+                                            <FaStar className="star" />
+                                            <FaStarHalfAlt className="star" />
+                                        </div>
+                                        <span className="dropdown-icon">▼</span>
+                                        <a href="#" className="ratings-link">45 ratings</a>
                                     </div>
 
                                     {/* card info */}
@@ -629,16 +763,17 @@ const ProductDetails = () => {
                                                             >
                                                                 <img src={`${SERVER_API_URL}/${colorObj.product_thumnail_img}`} alt="Sunglasses" className="product-image" />
                                                                 <div className="product-info">
-                                                                    <h3>{colorObj.product_title || "Unnamed Product"}</h3>
+                                                                    <p className='product-title' style={{ marginBottom: "8px", fontSize: "10px" }}>{colorObj.highlights || "N/A"}</p>
+
+                                                                    {/* <h3>{colorObj.product_title || "Unnamed Product"}</h3>
                                                                     <div className="product-discount">
                                                                         <p className="discount-title" style={{ fontSize: "10px" }}>₹{colorObj.product_price}</p>
                                                                         <span className="discount-off" style={{ fontSize: "10px" }}>({colorObj.discount}% OFF)<span className='out-of-stock' style={{ color: "#e8a617", textTransform: "uppercase", fontSize: "6px" }}>For {colorObj.gender}</span></span>
-                                                                    </div>
+                                                                    </div> */}
                                                                     <p className="product-price1">
                                                                         ₹{(colorObj.product_price - (colorObj.product_price * colorObj.discount / 100)).toFixed(0)}/-
                                                                     </p>
 
-                                                                    <p style={{ marginBottom: "8px" }}>{colorObj.highlights || "N/A"}</p>
                                                                 </div>
                                                             </div>
                                                         </Link>
@@ -654,9 +789,9 @@ const ProductDetails = () => {
                                         <h3>Technical Details</h3>
                                         <ul>
                                             <li><strong>Product ID:</strong> DCM413</li>
-                                            <li><strong>Frame Shape:</strong> 54 mm / 16 mm / 145 mm</li>
-                                            <li><strong>Frame Type:</strong> 54 mm / 16 mm / 145 mm</li>
-                                            <li className="color-section">
+                                            <li><strong>Frame Shape:</strong> {item?.result?.frame_shape}</li>
+                                            <li><strong>Frame Type:</strong> {item?.result?.frem_type}</li>
+                                            {/* <li className="color-section">
                                                 <strong>Frame Color: </strong>
                                                 {selectedColor ? (null) : (<p className='chose-color'>Please select color</p>)}
                                                 <div className="color-options">
@@ -686,20 +821,39 @@ const ProductDetails = () => {
                                                         <span>No Colors Available</span>
                                                     )}
                                                 </div>
-                                            </li>
+                                            </li> */}
                                             {/* Show the remaining list items only when "See All" is clicked */}
                                             {showAll && (
-                                                <>
+                                                <div className="custom-modal-overlay">
+                                                    <div className="custom-modal-container">
+                                                        <button onClick={() => setShowAll(false)} className="custom-close-btn">&times;</button>
+                                                        <h1 class="product-details-heading">Product Details</h1>
 
-                                                    <li><strong>Discount:</strong> 20%</li>
-                                                    <li><strong>Frame Material:</strong> 54 mm / 16 mm / 145 mm</li>
-                                                    <li><strong>Frame Description:</strong> 54 mm / 16 mm / 145 mm kkkkkkkkkk</li>
-                                                    <li><strong>Lens Information:</strong> 54 mm / 16 mm / 145 mm</li>
-                                                    <li><strong>Frame Material:</strong> 54 mm / 16 mm / 145 mm</li>
-                                                    <li><strong>Model No:</strong> 54 mm / 16 mm / 145 mm</li>
-                                                    <li><strong>Frame Size:</strong> 54 mm / 16 mm / 145 mm</li>
-                                                </>
+                                                        <div className='custom-modal-row-container'>
+                                                            <img
+                                                                className="custom-modal-image"
+                                                                src={selectedImage ? selectedImage : `${SERVER_API_URL}/${item?.result?.product_thumnail_img}`}
+                                                                alt="Large Product"
+                                                            />
+                                                            <ul className="custom-details-list">
+                                                                <li><strong>Product ID:</strong> DCM413</li>
+                                                                <li><strong>Product Price:</strong> ₹{item?.result?.product_price - (item?.result?.product_price * item?.result?.discount / 100).toFixed(0)}/-</li>
+
+                                                                <li><strong>Frame Shape:</strong> {item?.result?.frame_shape}</li>
+                                                                <li><strong>Frame Type:</strong> {item?.result?.frem_type}</li>
+                                                                <li><strong>Discount:</strong> {item?.result?.discount}%</li>
+                                                                <li><strong>Frame Material:</strong> fiber</li>
+                                                                <li><strong>Frame Description:</strong> {item?.result?.highlights}</li>
+                                                                <li><strong>Lens Information:</strong> 54 mm / 16 mm / 145 mm</li>
+                                                                <li><strong>Model No:</strong> DCM413</li>
+                                                                <li><strong>Frame Size:</strong> 54 mm / 16 mm / 145 mm</li>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             )}
+
                                         </ul>
 
                                         {/* Display selected color */}
@@ -721,20 +875,19 @@ const ProductDetails = () => {
                                 </div>
                             </div>
 
-                            {/* Customer Reviews Section */}
-                            <div className="customer-reviews">
-                                <h2>Customer Reviews & Ratings</h2>
-                                <p>4.0 <span>★</span> 23,045 reviews</p>
-                                <div className="reviews-row">
-                                    {reviews.map((review) => (
-                                        <div key={review.id} className="review-card">
-                                            <p>{review.comment}</p>
-                                            <p style={{ color: "#FCBF02" }}>{'★'.repeat(review.rating)}</p>
-                                            <p>{review.user} - {review.date}</p>
-                                        </div>
-                                    ))}
-                                </div>
+                            {/* Men-Image Section */}
+                            <div className='customer-image-container'>
+                                <img className='men-image' src={men_image} alt='men-image' />
+                                <img className='men-image' src={men_image} alt='men-image' />
+                                <img className='men-image' src={men_image} alt='men-image' />
                             </div>
+
+                            <div className='customer-image-container2'>
+                                <img className='men-image' src={men_image2} alt='men-image' />
+                                <img className='men-image' src={men_image2} alt='men-image' />
+                            </div>
+
+                            {/* Customer Suggested Section */}
                             <div className="suggested-frames">
                                 <h2>Suggested Frames</h2>
                                 <div className="frames-row">
@@ -965,30 +1118,40 @@ const ProductDetails = () => {
                                 </div>
                             )}
                         </div>
+
                         <div className='product-details-child-rigth'>
                             <div className="price-product-card">
                                 <h1 className="price">₹{product_price.toFixed(0)}/-</h1>
                                 <p className="shipping-info">
                                     Get <strong>Fast, Free Shipping</strong> with
                                 </p>
-                                <p className="location">📍 Delivering to San Francisco 94122</p>
-                                <a href="#" className="update-location">- Update location</a>
+                                {mapDisplayAddress && (
+                                    <>
+                                        <p className="location" onClick={handleOpenGoogleMap}><IoMdLocate size={22} style={{ paddingTop: "10px" }} /> Delivering to {mapDisplayAddress}</p>
+                                        <a onClick={handleOpenGoogleMap} className="update-location">- location</a>
+                                    </>
+                                )}
+
                                 <p className="stock">In Stock</p>
                                 <div className='quntity-container'>
                                     <label className="quantity-label">Quantity:</label>
-                                    <button className='add-power-cart' onClick={handlePowerClick}
+                                    {/* <button className='add-power-cart' onClick={handlePowerClick}
                                         disabled={!selectedColor} // Disable if selectedColor is null
-                                        style={{ opacity: !selectedColor ? 0.7 : 1, cursor: !selectedColor ? "not-allowed" : "pointer" }}>Add power</button>
+                                        style={{ opacity: !selectedColor ? 0.7 : 1, cursor: !selectedColor ? "not-allowed" : "pointer" }}>Add power</button> */}
                                 </div>
 
-                                <select className="quantity-dropdown">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
+                                <select
+                                    className="quantity-dropdown"
+                                    value={productQuntity}
+                                    onChange={(e) => setProductQuntity(Number(e.target.value))}
+                                >
+                                    {[...Array(6)].map((_, index) => (
+                                        <option key={index + 1} value={index + 1}>
+                                            {index + 1}
+                                        </option>
+                                    ))}
                                 </select>
+
                                 <button className="add-to-cart" onClick={() => addToCart(item)}>Add to Cart</button>
                                 <button className="buy-now" onClick={handleDirectPayment}
                                     disabled={!selectedColor} // Disable if selectedColor is null
@@ -996,9 +1159,10 @@ const ProductDetails = () => {
 
                                 <p className="seller-info">Ships from <strong>Softgenics Ind. Pvt. Ltd.</strong></p>
                                 <p className="sold-by">Sold by <a href="#">SOJOS Vision</a></p>
-                                <p className="returns">Returns <a href="#">30-day refund/replacement</a></p>
+                                <p className="returns">Returns <a href="#">30-day refund / replacement</a></p>
                                 <p className="payment">Payment <a href="#">Secure transaction</a></p>
                             </div>
+
                             {/* youtube container */}
                             <div className='youtube-main-container'>
                                 <iframe
@@ -1025,7 +1189,99 @@ const ProductDetails = () => {
                             </div>
                         </div>
                     </div>
+
+                    {/* customer-reviews */}
+                    <div className="customer-reviews">
+                        <h2>Customer Reviews & Ratings</h2>
+                        <p>
+                            4.0 <span style={{ color: "#FCBF02" }}>★★★★</span> 45 reviews
+                        </p>
+
+                        <div className="reviews-swiper-wrapper">
+                            <button className="review-nav-btn prev-review-btn">‹</button>
+
+                            <Swiper
+                                modules={[Navigation]}
+                                spaceBetween={20}
+                                slidesPerView={5} // Force 4 cards visible
+                                navigation={{
+                                    nextEl: ".next-review-btn",
+                                    prevEl: ".prev-review-btn",
+                                }}
+                            >
+                                {reviews.map((review) => (
+                                    <SwiperSlide key={review.id}>
+                                        <div className="review-card">
+                                            <p style={{ color: "#00B4C5" }}>{review.comment}</p>
+                                            <p style={{ color: "#FCBF02" }}>{"★".repeat(review.rating)}</p>
+                                            <p>{review.user} - {review.date}</p>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                            <button className="review-nav-btn next-review-btn">›</button>
+                        </div>
+                    </div>
+
                     <FaqPage />
+
+                    {/* stock display < 5 */}
+                    <div className="low-stock-container">
+                        <Swiper
+                            modules={[Navigation, Pagination]}
+                            spaceBetween={10}
+                            slidesPerView={3} // Show 3 items at a time
+                            navigation
+                            pagination={{ clickable: true }}
+                            breakpoints={{
+                                640: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 },
+                                1280: { slidesPerView: 4 }
+                            }}
+                        >
+                            {allProducts?.result?.length > 0 &&
+                                allProducts.result
+                                    .filter(frame => frame.count_in_stock > 0 && frame.count_in_stock < 7)
+                                    .map((frame) => (
+                                        <SwiperSlide key={frame.id}>
+                                            <div className="low-stock-card">
+                                                <Link to={`/product-item/${frame.product_id}`}>
+                                                    <div className="low-stock-image">
+                                                        {frame.product_thumnail_img ? (
+                                                            <img
+                                                                src={`${SERVER_API_URL}/${frame.product_thumnail_img}`}
+                                                                alt={frame.name}
+                                                                className="product-thumbnail"
+                                                            />
+                                                        ) : (
+                                                            <div className="no-image">Image Not Available</div>
+                                                        )}
+                                                    </div>
+                                                </Link>
+                                                <h3 className="product-title">{frame.product_title || "Unnamed Product"}</h3>
+
+                                                <div className="product-discount-info">
+                                                    <p className="original-price">₹{frame.product_price}</p>
+                                                    <span className="discount-percentage">
+                                                        ({frame.discount}% OFF)
+                                                        <span className='stock-warning'>
+                                                            For {frame.gender}
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <p className="final-price">
+                                                    ₹{(frame.product_price - (frame.product_price * frame.discount / 100)).toFixed(0)}/-
+                                                </p>
+                                                <p className="product-description">{frame.highlights || "N/A"}</p>
+                                                <p className="product-material">Material: {frame.material || "fiber"}</p>
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                        </Swiper>
+                    </div>
+                    <Footer />
+
                 </div>
             )}
 
