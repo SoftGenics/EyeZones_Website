@@ -6,12 +6,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Header from "../../components/Header";
 import { LuArrowDownUp } from "react-icons/lu";
-// import { CiHeart } from "react-icons/ci";
-// import { FaHeart } from "react-icons/fa";
-// import { ImFire } from "react-icons/im";
-// import { SlFire } from "react-icons/sl";
-// import { BsBagHeart } from "react-icons/bs";
-// import { BsBagHeartFill } from "react-icons/bs";
 import wishlist from '../../Assets/images/wishlist.svg'
 import wishlist1 from '../../Assets/images/wishlist1.svg'
 
@@ -130,7 +124,7 @@ const ProductDisplay = () => {
     };
     fetchData();
   }, [category]);
-  console.log("category", category)
+  // console.log("category", category)
 
   const filterByCategory = (products, category) => {
     if (!category || category.toLowerCase() === "both") return products;

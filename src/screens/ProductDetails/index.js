@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SERVER_API_URL } from '../../server/server';
 import { SERVER_URL } from '../../server/server';
@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import { GlobleInfo } from '../../App';
 import { IoIosArrowBack } from "react-icons/io";
@@ -148,7 +148,9 @@ const ProductDetails = () => {
     const [productQuntity, setProductQuntity] = useState(1);
 
     const [selectedId, setSelectedId] = useState(null);
-    console.log("allProducts", allProducts)
+    const rattingAndReview = useRef(null);
+    console.log("productQuntity", productQuntity)
+    console.log("selectedColor", selectedColor)
 
     useEffect(() => {
         if (item?.result?.frameColor && item?.result?.lenshColor) {
@@ -223,6 +225,12 @@ const ProductDetails = () => {
         fetchAddress();
     }, [product_id]); // Add dependencies here if needed
 
+    // scrollToSection
+    const scrollToSection = (ref) => {
+        if (ref.current) {
+            ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     // Function to handle sharing
     const handleShare = (platform) => {
@@ -331,14 +339,15 @@ const ProductDetails = () => {
     };
 
     const handleDirectPayment = () => {
-        if (product_price, mobile_num, product_id) {
+        if (product_price, mobile_num, product_id, productQuntity) {
             const power = {
                 selectedLensOrProducrPrice: product_price,
             }
             const product = {
                 mobile_number: mobile_num,
                 selectedColor: selectedColor,
-                product_id: product_id
+                product_id: product_id,
+                productQuntity: productQuntity
             }
             // Save the data to context
             saveCheckoutData({ power, product });
@@ -546,8 +555,6 @@ const ProductDetails = () => {
 
     const product_price = (item?.result?.product_price - (item?.result?.product_price * item?.result?.discount / 100)) * productQuntity;
 
-
-
     return (
         <>
             <Header />
@@ -726,7 +733,7 @@ const ProductDetails = () => {
                                 <div className="product-info-section">
                                     <h1 className="product-title">{item?.result?.highlights} Stylish Sunglasses</h1>
                                     <h3 className="product-title">{item?.result?.product_title}</h3>
-                                    <div className="rating-container">
+                                    <div className="rating-container" onClick={() => scrollToSection(rattingAndReview)}>
                                         <span className="rating-value">4.4</span>
                                         <div className="stars">
                                             <FaStar className="star" />
@@ -894,7 +901,11 @@ const ProductDetails = () => {
                                     {item?.suggestedProducts?.length > 0 ? (
                                         item.suggestedProducts.map((frame) => (
                                             <div key={frame.id} className="frame-card">
-                                                <Link to={`/product-item/${frame.product_id}`}>
+                                                <Link
+                                                    to={`/product-item/${frame.product_id}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
                                                     <div className="frame-image">
                                                         {frame.product_thumnail_img ? (
                                                             <img src={`${SERVER_API_URL}/${frame.product_thumnail_img}`} alt={frame.name} style={{ maxWidth: "100%" }} />
@@ -916,9 +927,7 @@ const ProductDetails = () => {
                                                 <p style={{ marginBottom: "8px" }}>{frame.highlights || "N/A"}</p>
 
                                                 <p>Material: {frame.material || "fiber"}</p>
-                                                {/* <button className="cart-btn">
-                                            <img src={tdesign} alt="Add to Cart" />
-                                        </button> */}
+
                                             </div>
                                         ))
                                     ) : (
@@ -1191,7 +1200,7 @@ const ProductDetails = () => {
                     </div>
 
                     {/* customer-reviews */}
-                    <div className="customer-reviews">
+                    <div className="customer-reviews" ref={rattingAndReview}>
                         <h2>Customer Reviews & Ratings</h2>
                         <p>
                             4.0 <span style={{ color: "#FCBF02" }}>★★★★</span> 45 reviews
@@ -1201,9 +1210,12 @@ const ProductDetails = () => {
                             <button className="review-nav-btn prev-review-btn">‹</button>
 
                             <Swiper
-                                modules={[Navigation]}
                                 spaceBetween={20}
                                 slidesPerView={5} // Force 4 cards visible
+                                pagination={{ clickable: true }}
+                                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                                loop={true}
+                                modules={[Navigation, Pagination, Autoplay]}
                                 navigation={{
                                     nextEl: ".next-review-btn",
                                     prevEl: ".prev-review-btn",
@@ -1229,11 +1241,13 @@ const ProductDetails = () => {
                     {/* stock display < 5 */}
                     <div className="low-stock-container">
                         <Swiper
-                            modules={[Navigation, Pagination]}
                             spaceBetween={10}
                             slidesPerView={3} // Show 3 items at a time
                             navigation
                             pagination={{ clickable: true }}
+                            autoplay={{ delay: 2000, disableOnInteraction: false }}
+                            loop={true}
+                            modules={[Navigation, Pagination, Autoplay]}
                             breakpoints={{
                                 640: { slidesPerView: 2 },
                                 1024: { slidesPerView: 3 },
@@ -1246,7 +1260,11 @@ const ProductDetails = () => {
                                     .map((frame) => (
                                         <SwiperSlide key={frame.id}>
                                             <div className="low-stock-card">
-                                                <Link to={`/product-item/${frame.product_id}`}>
+                                                <Link
+                                                    to={`/product-item/${frame.product_id}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
                                                     <div className="low-stock-image">
                                                         {frame.product_thumnail_img ? (
                                                             <img

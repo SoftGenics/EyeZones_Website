@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import { SERVER_API_URL } from '../../server/server';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 // import yourPerfectPairBanner from '../../Assets/images/your-perfect-pair-banner.webp';
@@ -42,7 +45,169 @@ import d2 from '../../Assets/images/sunglasses4.png'
 import d from '../../Assets/images/sunglasses5.png'
 import e2 from '../../Assets/images/sunglasses6.png'
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import './home.css';
+
+// const glasses = [
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
+//     glass_brand: "Tees By Fastrack",
+//     glass_name: "Blue Aviator Sunglasses For Men And Women",
+//     glass_price: "₹1,000",
+//     glass_tax: "Inclusive of all taxes"
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/P/5/P513GY5V_1_lar.jpg",
+//     name: "Credit Card Offers",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+//     name: "New Arrivals",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1510UFA1MBLV_1_lar.jpg",
+//     name: "Limited Edition",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/p/4/p420bk3p_1_lar.jpg",
+//     name: "Festive Collection",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1278WFP6MOLV_1_lar.jpg",
+//     name: "Hot Deals",
+//   },
+
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+//     name: "Flash Sale",
+//   },
+// ];
+const glasses = [
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
+    glass_brand: "Tees By Fastrack ",
+    glass_name: "Premium Blue Aviator Sunglasses For Men And Women with UV Protection",
+    glass_price: "₹1,000",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/P/5/P513GY5V_1_lar.jpg",
+    glass_brand: "RayShield Signature ",
+    glass_name: "Stylish Grey Rectangle Sunglasses for Men with Polarized Lenses",
+    glass_price: "₹850",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+    glass_brand: "Urban Eyes Elite ",
+    glass_name: "Matte Red Round Sunglasses with Anti-Glare Coating for All-Day Comfort",
+    glass_price: "₹1,200",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1510UFA1MBLV_1_lar.jpg",
+    glass_brand: "SunBlaze Luxe ",
+    glass_name: "Blue Mirror Finish Sunglasses for Women with Lightweight Frame",
+    glass_price: "₹999",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/p/4/p420bk3p_1_lar.jpg",
+    glass_brand: "VisionPro Classic ",
+    glass_name: "Classic Black Wayfarer Sunglasses for Men – Timeless Design",
+    glass_price: "₹950",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1278WFP6MOLV_1_lar.jpg",
+    glass_brand: "OpticOne Urban ",
+    glass_name: "Olive Green Square Frame Sunglasses with Gradient Lenses",
+    glass_price: "₹1,100",
+    glass_tax: "Inclusive of all taxes"
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+    glass_brand: "ZoomWear Exclusive ",
+    glass_name: "Limited Edition Matte Red Aviator Sunglasses with HD Vision",
+    glass_price: "₹1,050",
+    glass_tax: "Inclusive of all taxes"
+  }
+];
+
+
+
+const categories = [
+  {
+    title: "Sunglass Styles for Men",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Round-SG_310X300_1.png",
+  },
+  {
+    title: "Bold Sunglass Frames",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Square_310X300.png",
+  },
+  {
+    title: "Sunglass Picks for Boys",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Aviator_310X300.png",
+  },
+  {
+    title: "Chic Sunglasses for Women",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Cycling_310X300.png",
+  },
+  {
+    title: "Trendy Sunglass Frames",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/500x500/media/wysiwyg/titan_cms/cards-section/frame-aligner-image_270X240_new.jpg",
+  },
+  {
+    title: "Sunglass Looks for Girls",
+    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Wayfarer_FR_310X300.png",
+  },
+];
+
+const slide = [
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
+    name: "Summer Sale",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web-banners_Credit-card_2800X800_1_.png",
+    name: "Credit Card Offers",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-15_1.jpg",
+    name: "New Arrivals",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web_Banner_1400x400_copy_3_1_.jpg",
+    name: "Limited Edition",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-9.jpg",
+    name: "Festive Collection",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
+    name: "Hot Deals",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
+    name: "Signature Styles",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-1_2.jpg",
+    name: "Eyewear Trends",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
+    name: "Designer Picks",
+  },
+  {
+    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-7_2_.jpg",
+    name: "Flash Sale",
+  },
+];
 
 const Home = () => {
   const [bannerData, setBannerData] = useState([])
@@ -179,35 +344,63 @@ const Home = () => {
 
           </div>
 
-          {/* Top Banners */}
-          <Link to="#">
-            <div className='your-perfect-pair'>
-              <div className='yourPerfectPairBanner-container'>
-                {/* <img src={yourPerfectPairBanner} className='yourPerfectPairBanner' alt='Your Perfect Pair Banner' /> */}
-                {yourPerfectPairBanner && (
-                  <img
-                    src={`${SERVER_API_URL}/uploads/${yourPerfectPairBanner}`} // Ensure correct URL
-                    className="yourPerfectPairBanner"
-                    alt="Your Perfect Pair Banner"
-                  />
-                )}
-              </div>
-
-              <div className='crystalClearVisionBanner-container'>
-                {/* <img src={crystalClearVisionBanner} className='crystalClearVisionBanner' alt='Crystal Clear Vision Banner' /> */}
-                {crystalClearVisionBanner && (
-                  <img
-                    src={`${SERVER_API_URL}/uploads/${crystalClearVisionBanner}`} // Ensure correct URL
-                    className="crystalClearVisionBanner"
-                    alt="Crystal Clear Vision Banner"
-                  />
-                )}
-              </div>
+          <div className="slider-main-container">
+            <div className="slider-navigation">
+              <div className="prev-slider-btn">&#8249;</div>
+              <div className="next-slider-btn">&#8250;</div>
             </div>
-          </Link>
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              slidesPerView={1.2}
+              centeredSlides={true}
+              spaceBetween={20}
+              loop={true}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              navigation={{
+                nextEl: ".next-slider-btn",
+                prevEl: ".prev-slider-btn",
+              }}
+              pagination={{ clickable: true }}
+              speed={1300} // ← smooth transition (800ms)
+              style={{
+                padding: '0 5%',
+              }}
+            >
+              {slide.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <Link to={`/product-item/${item.name}`}>
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      style={{
+                        width: '100%',
+                        borderRadius: '16px',
+                        objectFit: 'cover',
+                        height: '300px', // or whatever works for your design
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
+                      }}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
 
-          {/* Glasses Categories Section */}
-          <div className="glasses-category-container">
+          <div className="sunglasses-grid">
+            {categories.map((cat, index) => (
+              // <Link to={`/product-item/${cat.title}`}>
+              <div className="sunglasses-card" key={index}>
+                <img src={cat.img} alt={cat.title} className="sunglasses-img" />
+                <div className="sunglasses-overlay">
+                  <p className="sunglasses-title">{cat.title}</p>
+                </div>
+              </div>
+              // </Link>
+            ))}
+          </div>
+
+           {/* Glasses Categories Section */}
+           <div className="glasses-category-container">
             <div className="category-banner">
               <img src={`${SERVER_API_URL}/uploads/${textBanner}`} className='text-banner' alt={textBanner} />
 
@@ -240,6 +433,64 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          <div className="glasses-swiper-container">
+            <h2 className="swiper-heading">Frequently Bought</h2>
+            <Swiper
+              slidesPerView={5}
+              spaceBetween={30}
+              navigation
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 2000, disableOnInteraction: false }}
+              loop={true}
+              modules={[Navigation, Pagination, Autoplay]}
+              className="glasses-swiper"
+            >
+
+              {glasses.map((glass, index) => (
+                <SwiperSlide key={index} className="glasses-slide">
+                  <div className="glass-card">
+                    <div className="glass-icons">
+                      <span className="heart-icon">❤️</span>
+                    </div>
+                    <img src={glass.src} alt={glass.name} className="glass-img" />
+                    <h3 className="glass-brand">{glass.glass_brand}</h3>
+                    <p className="glass-name">{glass.glass_name}</p>
+                    <p className="glass-price">{glass.glass_price}</p>
+                    <p className="glass-tax">{glass.glass_tax}</p>
+                  </div>
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+          </div>
+
+          {/* Top Banners */}
+          {/* <Link to="#">
+            <div className='your-perfect-pair'>
+              <div className='yourPerfectPairBanner-container'>
+                {yourPerfectPairBanner && (
+                  <img
+                    src={`${SERVER_API_URL}/uploads/${yourPerfectPairBanner}`} // Ensure correct URL
+                    className="yourPerfectPairBanner"
+                    alt="Your Perfect Pair Banner"
+                  />
+                )}
+              </div>
+
+              <div className='crystalClearVisionBanner-container'>
+                {crystalClearVisionBanner && (
+                  <img
+                    src={`${SERVER_API_URL}/uploads/${crystalClearVisionBanner}`} // Ensure correct URL
+                    className="crystalClearVisionBanner"
+                    alt="Crystal Clear Vision Banner"
+                  />
+                )}
+              </div>
+            </div>
+          </Link> */}
+
+
 
           {/* Helius Eyewear Section Group C*/}
 

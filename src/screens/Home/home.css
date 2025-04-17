@@ -23,7 +23,7 @@
 }
 
 /* top card */
-.card-container-main{
+.card-container-main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -32,15 +32,16 @@
     /* border: 1px solid red; */
     background-color: rgb(255, 255, 255);
 }
+
 .card-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
     margin-right: 10px;
-  }
-  
-  .card {
+}
+
+.card {
     width: 190px;
     height: 160px;
     border: 1px solid #ccc;
@@ -51,48 +52,54 @@
     /* background-color: #fff; */
     cursor: pointer;
     background-color: rgba(247, 245, 245, 0.876);
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     height: auto;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-image {
+}
+
+.card-image {
     width: 100%;
     height: 130px;
     /* object-fit: cover; */
     padding: 10px;
-  }
+}
 
-  .card-title {
+.card-title {
     font-size: 18px;
     color: rgb(138, 136, 136);
     font-family: var(--font-default-medium);
     font-size: 15px;
     letter-spacing: 0.5px;
     text-align: center;
-  }
-  .card-content p {
+}
+
+.card-content p {
     margin: 10px 0;
     color: #666;
     font-size: 12px;
     padding: 5px;
-  }
-  .card-content p:hover {
+}
+
+.card-content p:hover {
     background-color: #CECEDF;
-  }
-  .card-content {
-    border-top: .3px solid rgb(138, 136, 136);;
+}
+
+.card-content {
+    border-top: .3px solid rgb(138, 136, 136);
+    ;
     padding: 10px;
-    display: none; /* Initially hidden */
-  }
-  
-  .card:hover .card-content {
-    display: block; /* Show on hover */
-  }
-  
-  /* end card top */
+    display: none;
+    /* Initially hidden */
+}
+
+.card:hover .card-content {
+    display: block;
+    /* Show on hover */
+}
+
+/* end card top */
 
 .yourPerfectPairBanner-container {
     width: 75%;
@@ -424,6 +431,7 @@
     grid-template-columns: repeat(3, 1fr);
     /* Four equal columns */
 }
+
 @media (max-width: 768px) {
     .eyeglasses-grid1 {
         grid-template-columns: repeat(1, 1fr);
@@ -502,3 +510,176 @@
     color: #007bff;
 }
 
+/* slider-main-container  */
+.slider-main-container {
+    width: 96%;
+    margin: auto;
+    padding: 20px 0;
+    position: relative;
+}
+
+.slider-navigation {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    right: 0;
+    padding: 0 4%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    transform: translateY(-50%);
+    width: 86%;
+  }
+  
+  .prev-slider-btn,
+  .next-slider-btn {
+    width: 55px;
+    height: 55px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 35px;
+    transition: all 0.3s ease;
+    user-select: none;
+    padding-bottom: 7px;
+    font-weight: 200;
+  }
+  
+  .prev-slider-btn:hover,
+  .next-slider-btn:hover {
+    background-color: #00c2cb;
+    color: white;
+    transform: scale(1.1);
+  }
+
+/* sunglasses */
+.sunglasses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    width: 99%;
+}
+
+.sunglasses-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sunglasses-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.sunglasses-card:hover .sunglasses-img {
+    transform: scale(1.05);
+}
+
+.sunglasses-overlay {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}
+
+.sunglasses-title {
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 10px;
+    border: 1px solid white;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+/* glasses swiper */
+.glasses-swiper-container {
+    padding: 20px;
+    background-image: linear-gradient(180deg, #00c2cb 0%, #c1cdce 100%);
+    border-radius: 12px;
+    width: 98%;
+  }
+  
+  .swiper-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .glasses-slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .glass-name {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  
+  .glass-card {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: left;
+    height: 350px;
+  }
+  
+  .glass-icons {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .heart-icon,
+  .zoom-icon {
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .glass-img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 12px;
+    display: block;
+    padding-bottom: 30px;
+  }
+  
+  .glass-brand {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 8px 0 4px;
+  }
+  
+  .glass-name {
+    font-size: 14px;
+    color: #7a7a9d;
+    margin-bottom: 8px;
+  }
+  
+  .glass-price {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .glass-tax {
+    font-size: 13px;
+    color: #a0a0b2;
+  }
+  
