@@ -766,7 +766,10 @@ const ProductDetails = () => {
                                                                 key={colorObj.productId}
                                                                 className={`product-card ${selectedId === colorObj.productId ? "selected" : ""}`}
                                                                 // onClick={() => setSelectedId(colorObj.productId)}
-                                                                onClick={() => handleColorSelect(colorObj.frameColor, colorObj.lensColor)}
+                                                                onClick={() =>{
+                                                                    handleColorSelect(colorObj.frameColor, colorObj.lensColor);
+                                                                    setSelectedId(colorObj.productId);
+                                                                } }
                                                             >
                                                                 <img src={`${SERVER_API_URL}/${colorObj.product_thumnail_img}`} alt="Sunglasses" className="product-image" />
                                                                 <div className="product-info">

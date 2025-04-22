@@ -137,8 +137,6 @@ const glasses = [
   }
 ];
 
-
-
 const categories = [
   {
     title: "Sunglass Styles for Men",
@@ -240,9 +238,9 @@ const Home = () => {
   };
 
   // Find banners by their `exact_place`
-  const yourPerfectPairBanner = bannerData?.length > 0 ? bannerData.find(b => b.place === "Group_A" && b.exact_place === "left")?.image_url : null;
+  // const yourPerfectPairBanner = bannerData?.length > 0 ? bannerData.find(b => b.place === "Group_A" && b.exact_place === "left")?.image_url : null;
 
-  const crystalClearVisionBanner = bannerData?.length > 0 ? bannerData.find(b => b.place === "Group_A" && b.exact_place === "right")?.image_url : null;
+  // const crystalClearVisionBanner = bannerData?.length > 0 ? bannerData.find(b => b.place === "Group_A" && b.exact_place === "right")?.image_url : null;
 
   const textBanner = bannerData?.length > 0 ? bannerData.find(b => b.section === 'section_2' && b.place === "Group_A" && b.exact_place === "left")?.image_url : null;
 
@@ -368,7 +366,7 @@ const Home = () => {
             >
               {slide.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Link to={`/product-item/${item.name}`}>
+                  <Link to={`/product-display/${item.name}`}>
                     <img
                       src={item.src}
                       alt={item.name}
@@ -388,19 +386,19 @@ const Home = () => {
 
           <div className="sunglasses-grid">
             {categories.map((cat, index) => (
-              // <Link to={`/product-item/${cat.title}`}>
-              <div className="sunglasses-card" key={index}>
-                <img src={cat.img} alt={cat.title} className="sunglasses-img" />
-                <div className="sunglasses-overlay">
-                  <p className="sunglasses-title">{cat.title}</p>
+              <Link to={`/product-display/${cat.title}`}>
+                <div className="sunglasses-card" key={index}>
+                  <img src={cat.img} alt={cat.title} className="sunglasses-img" />
+                  <div className="sunglasses-overlay">
+                    <p className="sunglasses-title">{cat.title}</p>
+                  </div>
                 </div>
-              </div>
-              // </Link>
+              </Link>
             ))}
           </div>
 
-           {/* Glasses Categories Section */}
-           <div className="glasses-category-container">
+          {/* Glasses Categories Section */}
+          <div className="glasses-category-container">
             <div className="category-banner">
               <img src={`${SERVER_API_URL}/uploads/${textBanner}`} className='text-banner' alt={textBanner} />
 

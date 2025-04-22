@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { GlobleInfo } from "../../App";
 import { SERVER_API_URL } from '../../server/server';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { CiEdit } from "react-icons/ci";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import "./index.css"; // Import the external CSS file
@@ -11,6 +13,10 @@ const CheckoutPage = () => {
     const [addressList, setAddressList] = useState([])
     const [selectedAddress, setSelectedAddress] = useState(null);
     const [addNewAddress, setAddNewAddress] = useState(true);
+
+    const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+    const [addressToEdit, setAddressToEdit] = useState(null);
+
 
     const navigate = useNavigate();
 
@@ -27,7 +33,7 @@ const CheckoutPage = () => {
         landmark: "",
     });
 
-    const [message, setMessage] = useState(""); // Fix message variable
+    // const [message, setMessage] = useState(""); // Fix message variable
 
     // Redirect if checkoutData is empty
     useEffect(() => {
@@ -148,43 +154,43 @@ const CheckoutPage = () => {
         rzp1.open();
     }
 
-    
+
     // HandleDeliverHere
     const handleDeliverHereAndPayment = async () => {
         if (!selectedAddress) {
-          alert("Please select an address");
-          return;
+            alert("Please select an address");
+            return;
         }
-      
+
         const amount = checkoutData?.power?.selectedLensOrProducrPrice;
         if (!amount || isNaN(amount)) {
-          alert("Invalid amount for payment");
-          return;
+            alert("Invalid amount for payment");
+            return;
         }
-      
+
         console.log("Selected Address ID:", selectedAddress.addresses_id);
         console.log("Amount:", amount);
-      
+
         try {
-          const response = await axios.post(
-            `${SERVER_API_URL}/api/payment/order`,
-            { amount },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-      
-          const data = response.data;
-          console.log("Order Created:", data);
-      
-          handlePaymentVerifyHere(data.data);
+            const response = await axios.post(
+                `${SERVER_API_URL}/api/payment/order`,
+                { amount },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            const data = response.data;
+            console.log("Order Created:", data);
+
+            handlePaymentVerifyHere(data.data);
         } catch (error) {
-          console.error("Payment initiation failed:", error);
+            console.error("Payment initiation failed:", error);
         }
-      };
-      
+    };
+
 
     // handlePaymentVerifyHere Function
     const handlePaymentVerifyHere = async (data) => {
@@ -262,11 +268,69 @@ const CheckoutPage = () => {
             );
 
             console.log("API Response:", response.data);
-            setMessage(response.data.message || "Address submitted successfully!");
-            handlePayment(amount)
+
+            if (response.status === 201) {
+                toast.success("Address submitted successfully!");
+                handlePayment(amount); // Call only on success
+            } else {
+                toast.error("Failed to submit the address.");
+            }
         } catch (error) {
             console.error("Error submitting address:", error);
-            setMessage("Failed to submit the address. Please try again.");
+            toast.error("You can only have up to 10 addresses. Please try again.");
+        }
+    };
+
+
+    const handleDeleteAddress = async (id) => {
+        // console.log("id", id)
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                toast.error("Token missing.");
+                return;
+            }
+
+            const response = await axios.delete(`${SERVER_API_URL}/removeaddress/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (response.status === 200) {
+                toast.success("Address deleted successfully!");
+                fetchData();
+            } else {
+                toast.error("Failed to delete address.");
+            }
+        } catch (error) {
+            console.error("Delete error:", error);
+            toast.error("Something went wrong.");
+        }
+    };
+
+    // Edit Address
+    const handleUpdateAddress = async () => {
+        console.log("addresses_id", addressToEdit.addresses_id)
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                toast.error("Token missing.");
+                return;
+            }
+            await axios.put(`${SERVER_API_URL}/editaddress/${addressToEdit.addresses_id}`, addressToEdit, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            toast.success("Address updated successfully!");
+            setIsEditPopupOpen(false);
+            fetchData(); // Reload updated address list
+        } catch (error) {
+            toast.error("Failed to update address.");
+            console.log(error);
         }
     };
 
@@ -282,30 +346,46 @@ const CheckoutPage = () => {
                     </div>
 
                     {/* Selected Address */}
-                    {addressList.map((user) =>
-                        <div className="address-section">
-                            <div className="address-row">
-                                <input
-                                    type="radio"
-                                    name="address"
-                                    checked={selectedAddress?.addresses_id === user.addresses_id} // or compare using id if available
-                                    onChange={() => setSelectedAddress(user)}
-                                    className="radio-btn"
-                                />
-                                <div className="address-info">
-                                    <div className="info-row">
-                                        <span className="name">{user.contact_name}</span>
-                                        <span className="badge" style={{ textTransform: "uppercase" }}>{user.address_type}</span>
-                                        <span className="phone">{user.mobile_num}</span>
+                    <div className="address-section-main">
+                        {addressList.map((user) =>
+                            <div className="address-section">
+                                <div className="address-row">
+                                    <input
+                                        type="radio"
+                                        name="address"
+                                        checked={selectedAddress?.addresses_id === user.addresses_id} // or compare using id if available
+                                        onChange={() => setSelectedAddress(user)}
+                                        className="radio-btn"
+                                    />
+                                    <div className="address-info">
+                                        <div className="info-row">
+                                            <span className="name">{user.contact_name}</span>
+                                            <span className="badge" style={{ textTransform: "uppercase" }}>{user.address_type}</span>
+                                            <span className="phone">{user.mobile_num}</span>
+                                        </div>
+                                        <p className="full-address">01, {user.address}, {user.city}, {user.state} - <strong>{user.pincode}</strong>
+                                            <CiEdit size={22}
+                                                style={{ cursor: 'pointer', marginLeft: '10px' }}
+                                                onClick={() => {
+                                                    setAddressToEdit(user);
+                                                    setIsEditPopupOpen(true);
+                                                }}
+                                            />
+                                        </p>
                                     </div>
-                                    <p className="full-address">01, {user.address}, {user.city}, {user.state} - <strong>{user.pincode}</strong></p>
+                                    <button className="edit-btn"
+                                        onClick={() => {
+                                            if (window.confirm("Are you sure you want to delete this address?")) {
+                                                handleDeleteAddress(user.addresses_id); // ✅ Make sure this passes the correct ID
+                                            }
+                                        }}
+                                    ><RiDeleteBin6Line /></button>
                                 </div>
-                                <button className="edit-btn">EDIT</button>
-                            </div>
 
-                            <button className="deliver-btn" onClick={() => handleDeliverHereAndPayment()} style={{ opacity: selectedAddress?.addresses_id === user.addresses_id ? 1 : 0.5, cursor: selectedAddress?.addresses_id === user.addresses_id ? "pointer" : "not-allowed" }}>DELIVER HERE</button>
-                        </div>
-                    )}
+                                <button className="deliver-btn" onClick={() => handleDeliverHereAndPayment()} style={{ opacity: selectedAddress?.addresses_id === user.addresses_id ? 1 : 0.5, cursor: selectedAddress?.addresses_id === user.addresses_id ? "pointer" : "not-allowed" }}>DELIVER HERE</button>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Add new address */}
                     <div className="add-new-address">
@@ -436,6 +516,112 @@ const CheckoutPage = () => {
                     </form>
                 </div>
             )}
+
+            {/* Edit Address */}
+            {isEditPopupOpen && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <div className="delivery-header" style={{marginBottom:"20px", justifyContent:"center"}}>
+                            <span className="header-title">EDIT DELIVERY ADDRESS</span>
+                        </div>
+
+                        <div className="popup-form-grid">
+                            <div className="form-group">
+                                <label>Contact Name</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.contact_name}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, contact_name: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Mobile Number</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.mobile_num}
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Address (Area and Street)</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.address}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, address: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>City</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.city}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, city: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>State</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.state}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, state: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Pincode</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.pincode}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, pincode: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Flat, House No., Building</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.house_flat_office_no}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, house_flat_office_no: e.target.value })
+                                    }
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Landmark (Optional)</label>
+                                <input
+                                    type="text"
+                                    value={addressToEdit.landmark}
+                                    onChange={(e) =>
+                                        setAddressToEdit({ ...addressToEdit, landmark: e.target.value })
+                                    }
+                                />
+                            </div>
+                        </div>
+
+                        <div className="popup-actions">
+                            <button className="cancel-btn" onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
+                            <button className="update-btn" onClick={handleUpdateAddress}>Update</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
         </>
     );
 };
