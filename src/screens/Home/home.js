@@ -8,9 +8,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-// import yourPerfectPairBanner from '../../Assets/images/your-perfect-pair-banner.webp';
-// import crystalClearVisionBanner from '../../Assets/images/crystal-clear-vision-banner.webp';
-// import textBanner from '../../Assets/images/text_banner.webp';
+
 import aviatorVector from '../../Assets/images/goggles/aviator-vector.webp';
 import catsEye from '../../Assets/images/goggles/cats-eye.webp';
 import rectangleVector from '../../Assets/images/goggles/rectangle-vector.webp';
@@ -27,16 +25,6 @@ import zeroPawer from '../../Assets/images/zero-power-glasses.webp'
 import forMenSection from '../../Assets/images/for-men-section.webp'
 import forWomenSection from '../../Assets/images/for-women-section.webp'
 import forChildSection from '../../Assets/images/for-child-section.webp'
-// import stayAheadInStyleBanner from '../../Assets/images/stay-ahead-in-style-banner.webp'
-// import Blinkers from '../../Assets/images/Blinkers.webp'
-// import EyePoppin from '../../Assets/images/EyePoppin.webp'
-
-// import prog11 from '../../Assets/images/prog11.webp'
-// import a2 from '../../Assets/images/a2.webp'
-// import b2 from '../../Assets/images/b2.webp'
-// import d2 from '../../Assets/images/d2.webp'
-// import d from '../../Assets/images/d.webp'
-// import e2 from '../../Assets/images/e2.webp'
 
 import prog11 from '../../Assets/images/sunglasses1.png'
 import a2 from '../../Assets/images/sunglasses2.jpg'
@@ -51,40 +39,6 @@ import 'swiper/css/pagination';
 
 import './home.css';
 
-// const glasses = [
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
-//     glass_brand: "Tees By Fastrack",
-//     glass_name: "Blue Aviator Sunglasses For Men And Women",
-//     glass_price: "₹1,000",
-//     glass_tax: "Inclusive of all taxes"
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/P/5/P513GY5V_1_lar.jpg",
-//     name: "Credit Card Offers",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
-//     name: "New Arrivals",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1510UFA1MBLV_1_lar.jpg",
-//     name: "Limited Edition",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/p/4/p420bk3p_1_lar.jpg",
-//     name: "Festive Collection",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1278WFP6MOLV_1_lar.jpg",
-//     name: "Hot Deals",
-//   },
-
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
-//     name: "Flash Sale",
-//   },
-// ];
 const glasses = [
   {
     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
@@ -137,80 +91,88 @@ const glasses = [
   }
 ];
 
-const categories = [
-  {
-    title: "Sunglass Styles for Men",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Round-SG_310X300_1.png",
-  },
-  {
-    title: "Bold Sunglass Frames",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Square_310X300.png",
-  },
-  {
-    title: "Sunglass Picks for Boys",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Aviator_310X300.png",
-  },
-  {
-    title: "Chic Sunglasses for Women",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Cycling_310X300.png",
-  },
-  {
-    title: "Trendy Sunglass Frames",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/500x500/media/wysiwyg/titan_cms/cards-section/frame-aligner-image_270X240_new.jpg",
-  },
-  {
-    title: "Sunglass Looks for Girls",
-    img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Wayfarer_FR_310X300.png",
-  },
-];
+// const categories = [
+//   {
+//     title: "Sunglass Styles for Men",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Round-SG_310X300_1.png",
+//   },
+//   {
+//     title: "Bold Sunglass Frames",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Square_310X300.png",
+//   },
+//   {
+//     title: "Sunglass Picks for Boys",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Aviator_310X300.png",
+//   },
+//   {
+//     title: "Chic Sunglasses for Women",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Cycling_310X300.png",
+//   },
+//   {
+//     title: "Trendy Sunglass Frames",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/500x500/media/wysiwyg/titan_cms/cards-section/frame-aligner-image_270X240_new.jpg",
+//   },
+//   {
+//     title: "Sunglass Looks for Girls",
+//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Wayfarer_FR_310X300.png",
+//   },
+// ];
 
-const slide = [
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
-    name: "Summer Sale",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web-banners_Credit-card_2800X800_1_.png",
-    name: "Credit Card Offers",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-15_1.jpg",
-    name: "New Arrivals",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web_Banner_1400x400_copy_3_1_.jpg",
-    name: "Limited Edition",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-9.jpg",
-    name: "Festive Collection",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
-    name: "Hot Deals",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
-    name: "Signature Styles",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-1_2.jpg",
-    name: "Eyewear Trends",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
-    name: "Designer Picks",
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-7_2_.jpg",
-    name: "Flash Sale",
-  },
-];
+
+// const slide = [
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
+//     name: "Summer Sale",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web-banners_Credit-card_2800X800_1_.png",
+//     name: "Credit Card Offers",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-15_1.jpg",
+//     name: "New Arrivals",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web_Banner_1400x400_copy_3_1_.jpg",
+//     name: "Limited Edition",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-9.jpg",
+//     name: "Festive Collection",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
+//     name: "Hot Deals",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
+//     name: "Signature Styles",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-1_2.jpg",
+//     name: "Eyewear Trends",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
+//     name: "Designer Picks",
+//   },
+//   {
+//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-7_2_.jpg",
+//     name: "Flash Sale",
+//   },
+// ];
 
 const Home = () => {
   const [bannerData, setBannerData] = useState([])
   const [brandHeading, setBrandHeading] = useState([]);
-  console.log("brandHeading1", brandHeading)
+  const [allProducts, setAllProducts] = useState([]);
+  const [newArrivel, setNewArrivel] = useState([]);
+  const [slidersData, setSlidersData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // console.log("brandHeading1", brandHeading)
+  console.log("first product", allProducts)
+  console.log("newArrivel", newArrivel)
 
   useEffect(() => {
     const fetchBannerData = async () => {
@@ -224,18 +186,76 @@ const Home = () => {
       }
     };
 
+    // fetchSliders(); // Get Slider
     fetchBannerData(); // Call the async function
     fetchBrandHeading();
   }, []); // Empty dependency array ensures it runs once
 
   const fetchBrandHeading = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/brand`);
+      const response = await axios.get(`${SERVER_API_URL}/brand`);
       setBrandHeading(response.data.result);
     } catch (err) {
       console.log(err.message);
     }
   };
+
+
+  // useEffect(() => {
+  //   const fetchWithRetry = async (retries = 3, delay = 1000) => {
+  //     try {
+  //       const response = await axios.get(`${SERVER_API_URL}/api/slider`);
+  //       if (Array.isArray(response.data?.data)) {
+  //         setSlidersData(response.data.data);
+  //         setIsLoading(false); // ✅ Set when done
+  //       }
+  //     } catch (err) {
+  //       if (retries > 0) {
+  //         setTimeout(() => fetchWithRetry(retries - 1, delay), delay);
+  //       } else {
+  //         console.error("Slider fetch failed after retries", err);
+  //         setIsLoading(false);
+  //       }
+  //     }
+  //   };
+
+  //   fetchWithRetry();
+  // }, []);
+
+  useEffect(() => {
+    const fetchAllData = async (retries = 3, delay = 1000) => {
+      try {
+        // Fetch sliders
+        const sliderResponse = await axios.get(`${SERVER_API_URL}/api/slider`);
+        if (Array.isArray(sliderResponse.data?.data)) {
+          setSlidersData(sliderResponse.data.data);
+        }
+
+        // Fetch products
+        const productResponse = await axios.get(`${SERVER_API_URL}/product`);
+        const products = productResponse.data.result;
+        setAllProducts(products);
+
+        // New Arrvel
+        const newArrivelData = await axios.get(`${SERVER_API_URL}/new/arrivel/`);
+        const newArrivelProduct = newArrivelData.data.result;
+        setNewArrivel(newArrivelProduct);
+
+        setIsLoading(false); // ✅ Only after both are fetched
+
+      } catch (error) {
+        if (retries > 0) {
+          setTimeout(() => fetchAllData(retries - 1, delay), delay);
+        } else {
+          console.error("Data fetch failed after retries", error);
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchAllData();
+  }, []);
+
 
   // Find banners by their `exact_place`
   // const yourPerfectPairBanner = bannerData?.length > 0 ? bannerData.find(b => b.place === "Group_A" && b.exact_place === "left")?.image_url : null;
@@ -342,66 +362,140 @@ const Home = () => {
 
           </div>
 
+          {/* // slider main */}
           <div className="slider-main-container">
             <div className="slider-navigation">
               <div className="prev-slider-btn">&#8249;</div>
               <div className="next-slider-btn">&#8250;</div>
             </div>
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              slidesPerView={1.2}
-              centeredSlides={true}
-              spaceBetween={20}
-              loop={true}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              navigation={{
-                nextEl: ".next-slider-btn",
-                prevEl: ".prev-slider-btn",
-              }}
-              pagination={{ clickable: true }}
-              speed={1300} // ← smooth transition (800ms)
-              style={{
-                padding: '0 5%',
-              }}
-            >
-              {slide.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <Link to={`/product-display/${item.name}`}>
-                    <img
-                      src={item.src}
-                      alt={item.name}
-                      style={{
-                        width: '100%',
-                        borderRadius: '16px',
-                        objectFit: 'cover',
-                        height: '300px', // or whatever works for your design
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
-                      }}
-                    />
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+
+            {!isLoading && slidersData.length > 0 ? (
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                slidesPerView={1.2}
+                centeredSlides={true}
+                spaceBetween={20}
+                loop={true}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                navigation={{
+                  nextEl: ".next-slider-btn",
+                  prevEl: ".prev-slider-btn",
+                }}
+                pagination={{ clickable: true }}
+                speed={1300}
+                style={{ padding: '0 5%' }}
+              >
+                {slidersData.map((item, index) =>
+                  item.slider_name === 'banner' ? (
+                    <SwiperSlide key={index}>
+                      <Link
+                        to={`/product-display/${item.slider_link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={`${SERVER_API_URL}/uploads/${item.slider_url}`}
+                          alt={item.slider_name}
+                          style={{
+                            width: '100%',
+                            borderRadius: '16px',
+                            objectFit: 'cover',
+                            height: '300px',
+                            boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
+                          }}
+                        />
+                      </Link>
+                    </SwiperSlide>
+                  ) : null
+                )}
+              </Swiper>
+            ) : (
+              <p>Loading...</p>
+            )}
+
           </div>
 
           <div className="sunglasses-grid">
-            {categories.map((cat, index) => (
-              <Link to={`/product-display/${cat.title}`}>
-                <div className="sunglasses-card" key={index}>
-                  <img src={cat.img} alt={cat.title} className="sunglasses-img" />
-                  <div className="sunglasses-overlay">
-                    <p className="sunglasses-title">{cat.title}</p>
+            {slidersData.map((item, index) =>
+              item.slider_name === 'product_image' ? (
+                <Link to={`/product-display/${item.slider_link}`}>
+                  <div className="sunglasses-card" key={index}>
+                    <img
+                      src={`${SERVER_API_URL}/uploads/${item.slider_url}`}
+                      alt={item.slider_name}
+                      className="sunglasses-img"
+                    />
+                    <div className="sunglasses-overlay">
+                      <p className="sunglasses-title">Sunglass Styles for Men</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ) : (null))}
+          </div>
+
+          {/* New Arrivel */}
+          <div className="glasses-swiper-container" style={{ backgroundImage: 'linear-gradient(180deg, #43cea2 0%, #185a9d 100%)' }}>
+            <h2 className="swiper-heading">New Arrivel</h2>
+
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : newArrivel?.length > 0 ? (
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={30}
+                navigation
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                loop={true}
+                modules={[Navigation, Pagination, Autoplay]}
+                className="glasses-swiper"
+              >
+                {newArrivel
+                  .slice(0, 6) // 👈 limit to only 6 items
+                  .map((frame) => (
+                    <SwiperSlide key={frame.product_id} className="glasses-slide">
+                      <Link
+                        to={`/product-item/${frame.product_id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="glass-card"
+                      >
+                        <div className="glass-icons">
+                          {/* <span className="heart-icon">❤️</span> */}
+                        </div>
+                        <img
+                          src={`${SERVER_API_URL}/${frame.product_thumnail_img}`}
+                          alt={frame.product_title}
+                          className="glass-img"
+                        />
+                        <h3 className="glass-brand">{frame.product_title}</h3>
+                        <p className="glass-name">{frame.highlights}</p>
+                        <div className="product-discount-info">
+                          <p className="original-price" style={{ color: "#272932", fontSize: "11px", fontWeight: "700" }}>₹{frame.product_price}</p>
+                          <span className="discount-percentage" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
+                            ({frame.discount}% OFF)
+                            <span className="stock-warning" style={{color:"#00c2cb"}}>
+                              For {frame.gender}
+                            </span>
+                          </span>
+                        </div>
+                        <p className="final-price" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
+                          ₹{(frame.product_price - (frame.product_price * frame.discount / 100)).toFixed(0)}/-
+                        </p>
+                        <p className="glass-tax">Inclusive of all taxes</p>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
+            ) : (
+              <p>No products found</p>
+            )}
           </div>
 
           {/* Glasses Categories Section */}
           <div className="glasses-category-container">
             <div className="category-banner">
               <img src={`${SERVER_API_URL}/uploads/${textBanner}`} className='text-banner' alt={textBanner} />
-
             </div>
 
             <div className="categories-grid">
@@ -432,36 +526,68 @@ const Home = () => {
             </div>
           </div>
 
+
+
+          {/* glasses-swiper-container */}
           <div className="glasses-swiper-container">
             <h2 className="swiper-heading">Frequently Bought</h2>
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={30}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 2000, disableOnInteraction: false }}
-              loop={true}
-              modules={[Navigation, Pagination, Autoplay]}
-              className="glasses-swiper"
-            >
 
-              {glasses.map((glass, index) => (
-                <SwiperSlide key={index} className="glasses-slide">
-                  <div className="glass-card">
-                    <div className="glass-icons">
-                      <span className="heart-icon">❤️</span>
-                    </div>
-                    <img src={glass.src} alt={glass.name} className="glass-img" />
-                    <h3 className="glass-brand">{glass.glass_brand}</h3>
-                    <p className="glass-name">{glass.glass_name}</p>
-                    <p className="glass-price">{glass.glass_price}</p>
-                    <p className="glass-tax">{glass.glass_tax}</p>
-                  </div>
-                </SwiperSlide>
-              ))}
-
-            </Swiper>
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : allProducts?.length > 0 ? (
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={30}
+                navigation
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                loop={true}
+                modules={[Navigation, Pagination, Autoplay]}
+                className="glasses-swiper"
+              >
+                {allProducts
+                  .filter(frame => frame.count_in_stock > 0 && frame.count_in_stock < 7)
+                  .slice(0, 6) // 👈 limit to only 6 items
+                  .map((frame) => (
+                    <SwiperSlide key={frame.product_id} className="glasses-slide">
+                      <Link
+                        to={`/product-item/${frame.product_id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="glass-card"
+                      >
+                        <div className="glass-icons">
+                          {/* <span className="heart-icon">❤️</span> */}
+                        </div>
+                        <img
+                          src={`${SERVER_API_URL}/${frame.product_thumnail_img}`}
+                          alt={frame.product_title}
+                          className="glass-img"
+                        />
+                        <h3 className="glass-brand">{frame.product_title}</h3>
+                        <p className="glass-name">{frame.highlights}</p>
+                        <div className="product-discount-info">
+                          <p className="original-price" style={{ color: "#272932", fontSize: "11px", fontWeight: "700" }}>₹{frame.product_price}</p>
+                          <span className="discount-percentage" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
+                            ({frame.discount}% OFF)
+                            <span className="stock-warning" style={{color:"#00c2cb"}}>
+                              For {frame.gender}
+                            </span>
+                          </span>
+                        </div>
+                        <p className="final-price" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
+                          ₹{(frame.product_price - (frame.product_price * frame.discount / 100)).toFixed(0)}/-
+                        </p>
+                        <p className="glass-tax">Inclusive of all taxes</p>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
+            ) : (
+              <p>No products found</p>
+            )}
           </div>
+
 
           {/* Top Banners */}
           {/* <Link to="#">
@@ -491,7 +617,6 @@ const Home = () => {
 
 
           {/* Helius Eyewear Section Group C*/}
-
           <div className='single-banner-container'>
             <div className="helius-text">
               {brandHeading
@@ -501,33 +626,50 @@ const Home = () => {
                 ))}
               <hr className="hr-line" />
             </div>
-            <Link to={`/product-display/${"Helius Glasses"}`}> <img src={`${SERVER_API_URL}/uploads/${heliusGlasses}`} alt="Helius Glasses" className="helius-glasses-image" /></Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to={`/product-item/${41}`}>
+              <img src={`${SERVER_API_URL}/uploads/${heliusGlasses}`} alt="Helius Glasses" className="helius-glasses-image" />
+            </Link>
           </div>
 
 
           {/* Eyeglasses-container */}
           <div className='Eyeglasses-container'>
             <div className='Eyeglasses-container-main'>
-              <h1 className='Eyeglasses-text'>Eyeglasses</h1>
+              <h1 className='Eyeglasses-text'>Sunglass</h1>
               <hr className='hr-line' />
               <div className='Eyeglasses-home'>
 
                 <div className='pawerGlass-container'>
-                  <Link to={`/product-display/${"Square"}`}> <img src={pawerGlass} className='pawerGlass' /></Link>
+                  <Link to={`/product-display/HeliusGlasses`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details</h2>
                   </div>
                 </div>
+
                 <div className='pawerGlass-container'>
-                  <Link to={`/product-display/${"Square"}`}><img src={pawerGlass} className='pawerGlass' /></Link>
+                  <Link to={`/product-display/HeliusGlasses`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details </h2>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -543,40 +685,59 @@ const Home = () => {
             <div className='eyeglasses-grid'>
 
               {/* Computer Glasses*/}
-              <div className='eyeglasses-card' style={{ backgroundImage: `url(${computerGlassMen})` }}>
+              <Link to={`/product-display/Computer Glass Men`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='eyeglasses-card'
+                style={{ backgroundImage: `url(${computerGlassMen})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Computer Glasses</h2>
                   <p className='eyeglasses-card-description'>Protect Your Eyes - Blue Light Filtering</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
               {/* Sunglasses */}
-              <div className='eyeglasses-card' style={{ backgroundImage: `url(${sunglasses})` }}>
+              <Link to={`/product-display/Computer Glass Men`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='eyeglasses-card' style={{ backgroundImage: `url(${sunglasses})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Sunglasses</h2>
                   <p className='eyeglasses-card-description'>Stay Stylish - 100% UV Protection</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
               {/* Prescription Glasses */}
-              <div className='eyeglasses-card' style={{ backgroundImage: `url(${prescription})` }}>
+              <Link to={`/product-display/Computer Glass Men`}
+                className='eyeglasses-card'
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ backgroundImage: `url(${prescription})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Prescription</h2>
                   <p className='eyeglasses-card-description'>Perfect Clarity - Tailored to Your Needs</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
               {/* Zero Power Glasses */}
-              <div className='eyeglasses-card' style={{ backgroundImage: `url(${zeroPawer})` }}>
+              <Link to={`/product-display/Computer Glass Men`}
+                className='eyeglasses-card'
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ backgroundImage: `url(${zeroPawer})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Zero Power Glasses</h2>
                   <p className='eyeglasses-card-description'>Style without Prescription</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
             </div>
           </div>
@@ -591,36 +752,53 @@ const Home = () => {
                 ))}
               <hr className='hr-line' />
             </div>
-            <Link to={`/product-display/${"Square"}`}><img src={`${SERVER_API_URL}/uploads/${lykosEyewear}`} alt="Helius Glasses" className="helius-glasses-image" /></Link>
+            <Link to={`/product-item/${42}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={`${SERVER_API_URL}/uploads/${lykosEyewear}`} alt="Helius Glasses" className="helius-glasses-image" />
+            </Link>
           </div>
 
           {/* Eyeglasses-container */}
           <div className='Eyeglasses-container'>
             <div className='Eyeglasses-container-main'>
-              <h1 className='Eyeglasses-text'>Eyeglasses</h1>
+              <h1 className='Eyeglasses-text'>Sunglass</h1>
               <div className='Eyeglasses-home'>
 
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Lykos Eyewear`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details</h2>
                   </div>
                 </div>
+
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Lykos Eyewear`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details </h2>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
 
-          {/* Group F */}
+          {/* Card Group F */}
           <div className='eyeglasses-container'>
             {brandHeading
               .filter((heading) => heading.section === "section_4")
@@ -631,31 +809,46 @@ const Home = () => {
             <div className='eyeglasses-grid eyeglasses-grid1'>
 
               {/* Computer Glasses */}
-              <div className='eyeglasses-card eyeglasses-card1' style={{ backgroundImage: `url(${forMenSection})` }}>
+              <Link to={`/product-display/Computer Glasses`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='eyeglasses-card eyeglasses-card1'
+                style={{ backgroundImage: `url(${forMenSection})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Computer Glasses</h2>
                   <p className='eyeglasses-card-description'>Protect Your Eyes - Blue Light Filtering</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
               {/* Sunglasses */}
-              <div className='eyeglasses-card eyeglasses-card1' style={{ backgroundImage: `url(${forWomenSection})` }}>
+              <Link to={`/product-display/Sunglasses`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='eyeglasses-card eyeglasses-card1'
+                style={{ backgroundImage: `url(${forWomenSection})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Sunglasses</h2>
                   <p className='eyeglasses-card-description'>Stay Stylish - 100% UV Protection</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
               {/* Prescription Glasses */}
-              <div className='eyeglasses-card eyeglasses-card1' style={{ backgroundImage: `url(${forChildSection})` }}>
+              <Link to={`/product-display/Computer Glasses`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='eyeglasses-card eyeglasses-card1'
+                style={{ backgroundImage: `url(${forChildSection})` }}
+              >
                 <div className='eyeglasses-info'>
                   <h2 className='eyeglasses-card-title'>Prescription</h2>
                   <p className='eyeglasses-card-description'>Perfect Clarity - Tailored to Your Needs</p>
                 </div>
                 <div className='eyeglasses-arrow'>&#8250;</div>
-              </div>
+              </Link>
 
             </div>
           </div>
@@ -670,7 +863,12 @@ const Home = () => {
                 ))}
               <hr className='hr-line' />
             </div>
-            <Link to="/product-display"> <img src={`${SERVER_API_URL}/uploads/${stayAheadInStyleBanner}`} alt="Helius Glasses" className="helius-glasses-image" /></Link>
+            <Link to={`/product-item/${43}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={`${SERVER_API_URL}/uploads/${stayAheadInStyleBanner}`} alt="Helius Glasses" className="helius-glasses-image" />
+            </Link>
           </div>
 
           {/* Eyeglasses-container */}
@@ -680,17 +878,27 @@ const Home = () => {
               <div className='Eyeglasses-home'>
 
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details</h2>
                   </div>
                 </div>
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details </h2>
                   </div>
@@ -709,27 +917,42 @@ const Home = () => {
                 ))}
               <hr className='hr-line' />
             </div>
-            <Link to={`/product-display/${"Square"}`}><img src={`${SERVER_API_URL}/uploads/${Blinkers}`} alt="Helius Glasses" className="helius-glasses-image" /></Link>
+            <Link to={`/product-item/${44}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={`${SERVER_API_URL}/uploads/${Blinkers}`} alt="Helius Glasses" className="helius-glasses-image" />
+            </Link>
           </div>
 
           {/* Eyeglasses-container */}
           <div className='Eyeglasses-container'>
             <div className='Eyeglasses-container-main'>
-              <h1 className='Eyeglasses-text'>Eyeglasses</h1>
+              <h1 className='Eyeglasses-text'>Sunglass</h1>
               <div className='Eyeglasses-home'>
 
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details</h2>
                   </div>
                 </div>
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details </h2>
                   </div>
@@ -748,27 +971,42 @@ const Home = () => {
                 ))}
               <hr className='hr-line' />
             </div>
-            <Link to={`/product-display/${"Square"}`}> <img src={`${SERVER_API_URL}/uploads/${EyePoppin}`} alt="Helius Glasses" className="helius-glasses-image" /></Link>
+            <Link to={`/product-item/${45}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={`${SERVER_API_URL}/uploads/${EyePoppin}`} alt="Helius Glasses" className="helius-glasses-image" />
+            </Link>
           </div>
 
           {/* Eyeglasses-container */}
           <div className='Eyeglasses-container'>
             <div className='Eyeglasses-container-main'>
-              <h1 className='Eyeglasses-text'>Eyeglasses</h1>
+              <h1 className='Eyeglasses-text'>Sunglass</h1>
               <div className='Eyeglasses-home'>
 
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details</h2>
                   </div>
                 </div>
                 <div className='pawerGlass-container'>
-                  <img src={pawerGlass} className='pawerGlass' />
+                  <Link to={`/product-display/Sunglass Black FullRim Rectangle`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={pawerGlass} className='pawerGlass' />
+                  </Link>
                   <div className='pawerglass-text-container'>
-                    <p className='Power-Glasses-text'>Power Glasses</p>
+                    <p className='Power-Glasses-text'>Sunglass Glasses</p>
                     <h1 className='Rim-Rectangle-text'>Black Full Rim Rectangle</h1>
                     <h2 className='More-Details-text'>More Details </h2>
                   </div>
