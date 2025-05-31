@@ -26,140 +26,62 @@ import forMenSection from '../../Assets/images/for-men-section.webp'
 import forWomenSection from '../../Assets/images/for-women-section.webp'
 import forChildSection from '../../Assets/images/for-child-section.webp'
 
-import prog11 from '../../Assets/images/sunglasses1.png'
-import a2 from '../../Assets/images/sunglasses2.jpg'
-import b2 from '../../Assets/images/sunglasses3.png'
-import d2 from '../../Assets/images/sunglasses4.png'
-import d from '../../Assets/images/sunglasses5.png'
-import e2 from '../../Assets/images/sunglasses6.png'
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import './home.css';
 
-const glasses = [
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
-    glass_brand: "Tees By Fastrack ",
-    glass_name: "Premium Blue Aviator Sunglasses For Men And Women with UV Protection",
-    glass_price: "₹1,000",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/P/5/P513GY5V_1_lar.jpg",
-    glass_brand: "RayShield Signature ",
-    glass_name: "Stylish Grey Rectangle Sunglasses for Men with Polarized Lenses",
-    glass_price: "₹850",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
-    glass_brand: "Urban Eyes Elite ",
-    glass_name: "Matte Red Round Sunglasses with Anti-Glare Coating for All-Day Comfort",
-    glass_price: "₹1,200",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1510UFA1MBLV_1_lar.jpg",
-    glass_brand: "SunBlaze Luxe ",
-    glass_name: "Blue Mirror Finish Sunglasses for Women with Lightweight Frame",
-    glass_price: "₹999",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/p/4/p420bk3p_1_lar.jpg",
-    glass_brand: "VisionPro Classic ",
-    glass_name: "Classic Black Wayfarer Sunglasses for Men – Timeless Design",
-    glass_price: "₹950",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1278WFP6MOLV_1_lar.jpg",
-    glass_brand: "OpticOne Urban ",
-    glass_name: "Olive Green Square Frame Sunglasses with Gradient Lenses",
-    glass_price: "₹1,100",
-    glass_tax: "Inclusive of all taxes"
-  },
-  {
-    src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
-    glass_brand: "ZoomWear Exclusive ",
-    glass_name: "Limited Edition Matte Red Aviator Sunglasses with HD Vision",
-    glass_price: "₹1,050",
-    glass_tax: "Inclusive of all taxes"
-  }
-];
-
-// const categories = [
+// const glasses = [
 //   {
-//     title: "Sunglass Styles for Men",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Round-SG_310X300_1.png",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/M/8/M8021BU20V_1_lar.jpg",
+//     glass_brand: "Tees By Fastrack ",
+//     glass_name: "Premium Blue Aviator Sunglasses For Men And Women with UV Protection",
+//     glass_price: "₹1,000",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     title: "Bold Sunglass Frames",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Square_310X300.png",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/P/5/P513GY5V_1_lar.jpg",
+//     glass_brand: "RayShield Signature ",
+//     glass_name: "Stylish Grey Rectangle Sunglasses for Men with Polarized Lenses",
+//     glass_price: "₹850",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     title: "Sunglass Picks for Boys",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Aviator_310X300.png",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+//     glass_brand: "Urban Eyes Elite ",
+//     glass_name: "Matte Red Round Sunglasses with Anti-Glare Coating for All-Day Comfort",
+//     glass_price: "₹1,200",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     title: "Chic Sunglasses for Women",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Cycling_310X300.png",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1510UFA1MBLV_1_lar.jpg",
+//     glass_brand: "SunBlaze Luxe ",
+//     glass_name: "Blue Mirror Finish Sunglasses for Women with Lightweight Frame",
+//     glass_price: "₹999",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     title: "Trendy Sunglass Frames",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/500x500/media/wysiwyg/titan_cms/cards-section/frame-aligner-image_270X240_new.jpg",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/p/4/p420bk3p_1_lar.jpg",
+//     glass_brand: "VisionPro Classic ",
+//     glass_name: "Classic Black Wayfarer Sunglasses for Men – Timeless Design",
+//     glass_price: "₹950",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     title: "Sunglass Looks for Girls",
-//     img: "https://d3995ea24pmi7m.cloudfront.net/fit-in/310x300/media/wysiwyg/titan_cms/cards-section/Budget-Buys_Wayfarer_FR_310X300.png",
-//   },
-// ];
-
-
-// const slide = [
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
-//     name: "Summer Sale",
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1278WFP6MOLV_1_lar.jpg",
+//     glass_brand: "OpticOne Urban ",
+//     glass_name: "Olive Green Square Frame Sunglasses with Gradient Lenses",
+//     glass_price: "₹1,100",
+//     glass_tax: "Inclusive of all taxes"
 //   },
 //   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web-banners_Credit-card_2800X800_1_.png",
-//     name: "Credit Card Offers",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-15_1.jpg",
-//     name: "New Arrivals",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/Web_Banner_1400x400_copy_3_1_.jpg",
-//     name: "Limited Edition",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-9.jpg",
-//     name: "Festive Collection",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-16_1_.jpg",
-//     name: "Hot Deals",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
-//     name: "Signature Styles",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-1_2.jpg",
-//     name: "Eyewear Trends",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/3_3.jpg",
-//     name: "Designer Picks",
-//   },
-//   {
-//     src: "https://d3995ea24pmi7m.cloudfront.net/fit-in/1450x400/media/wysiwyg/2800x800-7_2_.jpg",
-//     name: "Flash Sale",
-//   },
+//     src: "https://d3995ea24pmi7m.cloudfront.net/media/catalog/product/F/T/FT1508UFP5MRDV_1_lar.jpg",
+//     glass_brand: "ZoomWear Exclusive ",
+//     glass_name: "Limited Edition Matte Red Aviator Sunglasses with HD Vision",
+//     glass_price: "₹1,050",
+//     glass_tax: "Inclusive of all taxes"
+//   }
 // ];
 
 const Home = () => {
@@ -199,28 +121,6 @@ const Home = () => {
       console.log(err.message);
     }
   };
-
-
-  // useEffect(() => {
-  //   const fetchWithRetry = async (retries = 3, delay = 1000) => {
-  //     try {
-  //       const response = await axios.get(`${SERVER_API_URL}/api/slider`);
-  //       if (Array.isArray(response.data?.data)) {
-  //         setSlidersData(response.data.data);
-  //         setIsLoading(false); // ✅ Set when done
-  //       }
-  //     } catch (err) {
-  //       if (retries > 0) {
-  //         setTimeout(() => fetchWithRetry(retries - 1, delay), delay);
-  //       } else {
-  //         console.error("Slider fetch failed after retries", err);
-  //         setIsLoading(false);
-  //       }
-  //     }
-  //   };
-
-  //   fetchWithRetry();
-  // }, []);
 
   useEffect(() => {
     const fetchAllData = async (retries = 3, delay = 1000) => {
@@ -281,84 +181,39 @@ const Home = () => {
         <div className='home-main-container'>
           {/* top card */}
           <div className='card-container-main'>
-            <div class="card-container">
-              <div class="card">
-                <img src={prog11} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Power Glass</h3>
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
+            {!isLoading && slidersData.length > 0 ? (
+              slidersData.map((data, index) => {
+                if (data.slider_name === "top_mini_image") {
+                  return (
+                    <Link
+                      to={`/product-display/${data.slider_link}`}
+                      target="_blank"
+                    >
+                      <div key={index} className="card-container">
+                        <div className="card">
+                          <img
+                            src={`${SERVER_API_URL}/uploads/${data.slider_url}`}
+                            alt="Eyeglasses"
+                            className="card-image"
+                          />
+                          <h3 className="card-title">{data.slider_link}</h3>
 
-            <div class="card-container">
-              <div class="card">
-                <img src={b2} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Power Sunglasses</h3>
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
+                          {/* <div className="card-content">
+                          <p>Air Light-Weight Powered Lenses</p>
+                          <p>Starting from ₹2000</p>
+                          <p>Air Light-Weight Powered Lenses</p>
+                          <p>Starting from ₹2000</p>
+                        </div> */}
 
-            <div class="card-container">
-              <div class="card">
-                <img src={d} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Screen saver</h3>
-
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-container">
-              <div class="card">
-                <img src={a2} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Sunglasses</h3>
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-container">
-              <div class="card">
-                <img src={d2} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Contact Lenses</h3>
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-container">
-              <div class="card">
-                <img src={e2} alt="Eyeglasses" class="card-image" />
-                <h3 class="card-title">Progressive lenses</h3>
-                <div class="card-content">
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                  <p>Air Light-Weight Powered Lenses</p>
-                  <p>Starting from ₹2000</p>
-                </div>
-              </div>
-            </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            ) : null}
 
           </div>
 
@@ -426,7 +281,7 @@ const Home = () => {
                       className="sunglasses-img"
                     />
                     <div className="sunglasses-overlay">
-                      <p className="sunglasses-title">Sunglass Styles for Men</p>
+                      <p className="sunglasses-title">{item.slider_link}</p>
                     </div>
                   </div>
                 </Link>
@@ -474,7 +329,7 @@ const Home = () => {
                           <p className="original-price" style={{ color: "#272932", fontSize: "11px", fontWeight: "700" }}>₹{frame.product_price}</p>
                           <span className="discount-percentage" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
                             ({frame.discount}% OFF)
-                            <span className="stock-warning" style={{color:"#00c2cb"}}>
+                            <span className="stock-warning" style={{ color: "#00c2cb" }}>
                               For {frame.gender}
                             </span>
                           </span>
@@ -570,7 +425,7 @@ const Home = () => {
                           <p className="original-price" style={{ color: "#272932", fontSize: "11px", fontWeight: "700" }}>₹{frame.product_price}</p>
                           <span className="discount-percentage" style={{ color: "#272932", fontSize: "12px", fontWeight: "700" }}>
                             ({frame.discount}% OFF)
-                            <span className="stock-warning" style={{color:"#00c2cb"}}>
+                            <span className="stock-warning" style={{ color: "#00c2cb" }}>
                               For {frame.gender}
                             </span>
                           </span>

@@ -757,14 +757,14 @@ const ProductDetails = () => {
                                                     </p>
                                                 )}
                                             </h3>
-                                            <div className="grid-container">
+                                            <div className="grid-container-product-details">
                                                 {getColorsForProduct(item?.result?.product_title).length > 0 ? (
                                                     getColorsForProduct(item?.result?.product_title).map((colorObj) => (
 
                                                         <Link to={`/product-item/${colorObj.productId}`}>
                                                             <div
                                                                 key={colorObj.productId}
-                                                                className={`product-card ${selectedId === colorObj.productId ? "selected" : ""}`}
+                                                                className={`product-card-product-details ${selectedId === colorObj.productId ? "selected" : ""}`}
                                                                 // onClick={() => setSelectedId(colorObj.productId)}
                                                                 onClick={() =>{
                                                                     handleColorSelect(colorObj.frameColor, colorObj.lensColor);
@@ -773,7 +773,7 @@ const ProductDetails = () => {
                                                             >
                                                                 <img src={`${SERVER_API_URL}/${colorObj.product_thumnail_img}`} alt="Sunglasses" className="product-image" />
                                                                 <div className="product-info">
-                                                                    <p className='product-title' style={{ marginBottom: "8px", fontSize: "10px" }}>{colorObj.highlights || "N/A"}</p>
+                                                                    <p className='product-title' style={{ marginBottom: "8px", fontSize: "12px" }}>{colorObj.highlights || "N/A"}</p>
 
                                                                     {/* <h3>{colorObj.product_title || "Unnamed Product"}</h3>
                                                                     <div className="product-discount">
@@ -1187,6 +1187,7 @@ const ProductDetails = () => {
                                     allowFullScreen
                                 ></iframe>
                             </div>
+
                             {/* https://www.youtube.com/shorts/0B-wiEkX8Uc */}
                             <div className='youtube-main-container'>
                                 <iframe
